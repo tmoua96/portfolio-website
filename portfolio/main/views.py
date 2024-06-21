@@ -4,7 +4,7 @@ from .models import Project, Tag
 # Create your views here.
 def home(request):
     projects = Project.objects.all()
-    tags = Tag.objects.all()
+    tags = Tag.objects.all().order_by("name")
     return render(request, "home.html", {"projects": projects, "tags": tags})
 
 def contact(request):
