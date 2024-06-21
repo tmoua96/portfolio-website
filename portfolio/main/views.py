@@ -7,8 +7,8 @@ def home(request):
     tags = Tag.objects.all().order_by("name")
     return render(request, "home.html", {"projects": projects, "tags": tags})
 
-def contact(request):
-    return render(request, "contact.html")
+def about(request):
+    return render(request, "about.html")
 
 def project(request, id):
     project = get_object_or_404(Project, pk=id)
