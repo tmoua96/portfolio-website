@@ -18,7 +18,7 @@
   }
   
   .tag {
-    background-color: #007bff;
+    background-color: #636364;
     color: white;
     border: none;
     padding: 5px 10px;
@@ -28,8 +28,12 @@
   }
   
   .tag:hover {
-    background-color: #0056b3;
+    background-color: #484849;
   }
+  
+  .tag.selected {
+    background-color: #007bff;
+}
   
   /* Projects list */
   .projects-list {
@@ -51,6 +55,14 @@
   .project p {
     margin-bottom: 10px;
     line-height: 1.5;
+  }
+
+  .project-image {
+    max-width: 100%;
+    height: 300px; /* Set a fixed height */
+    background-size: cover; /* Maintain aspect ratio and fill the container */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent image repetition */
   }
   
   /* Responsive design */

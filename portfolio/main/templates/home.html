@@ -21,9 +21,18 @@ Home Page
 <div class="projects-list">
     {% for project in projects %}
     <div class="project" data-name="{{ project.title|lower }}" data-tags="{{ project.tags.all|join:', '|lower }}">
-        <h2><a href="{% url 'project' project.id %}">{{project.title}}</a></h2>
-        <p>{{ project.description }}</p>
-        <p>Tags: {{ project.tags.all|join:', ' }}</p>
+        <div>
+            {% if project.images.all %}
+                <div class="project-image" style="background-image: url('{{ project.images.all.0.image.url }}');">
+                </div>
+            {% endif %}
+            <!-- ... -->
+        </div>
+        <div>
+            <h2><a href="{% url 'project' project.id %}">{{project.title}}</a></h2>
+            <p>{{ project.description }}</p>
+            <p>Tags: {{ project.tags.all|join:', ' }}</p>
+        </div>
     </div>
     {% endfor %}
 </div>
