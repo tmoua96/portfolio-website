@@ -24,9 +24,7 @@
     {% block extrahead %} {% endblock extrahead %}
   </head>
   <body>
-    {% comment %}
     <header>
-      {% endcomment %} 
       <!-- <nav class="navbar navbar-dark bg-dark">
         <div class="ms-auto">
           <a href="/" class="btn btn-dark me-1">Home</a>
@@ -53,15 +51,13 @@
                 <a class="nav-link" href="/">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/about">About</a>
+                <a class="nav-link" href="/about">About Me</a>
               </li>
             </ul>
           </div>
         </div>
       </nav>
-      {% comment %}
     </header>
-    {% endcomment %}
     <div class="my-5 text-center container">
       <main>{% block content %} {% endblock content %}</main>
     </div>
