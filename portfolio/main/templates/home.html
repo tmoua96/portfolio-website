@@ -23,7 +23,7 @@ Home Page
     <div class="project" data-name="{{ project.title|lower }}" data-tags="{{ project.tags.all|join:', '|lower }}">
         <div>
             {% if project.images.all %}
-                {% with project.images.all.first() as first_image %}
+                {% with project.images.all.first as first_image %}
                     {% if first_image %}
                         <a href="{% url 'project' project.id %}">
                             <div class="project-image position-relative overflow-hidden">
@@ -31,7 +31,7 @@ Home Page
                                 <img src="{{ first_image.image.url }}" class="img-fluid" alt="{{ project.title }}">
                             </div>
                         </a>
-                    {% {% {% endif %} %}%}
+                    {% endif %}
                 {% endwith %}
             {% endif %}
         </div>
