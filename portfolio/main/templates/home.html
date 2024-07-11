@@ -23,12 +23,16 @@ Home Page
     <div class="project" data-name="{{ project.title|lower }}" data-tags="{{ project.tags.all|join:', '|lower }}">
         <div>
             {% if project.images.all %}
-            <a href="{% url 'project' project.id %}">
-                <div class="project-image position-relative overflow-hidden">
-                    <div class="image-overlay position-absolute w-100 h-100 bg-dark opacity-0 hover-overlay"></div>
-                    <img src="{{ project.images.all.0.image.url }}" class="img-fluid" alt="{{ project.title }}">
-                </div>
-            </a>
+                {% with project.images.all.first() as first_image %}
+                    {% if first_image %}
+                        <a href="{% url 'project' project.id %}">
+                            <div class="project-image position-relative overflow-hidden">
+                                <div class="image-overlay position-absolute w-100 h-100 bg-dark opacity-0 hover-overlay"></div>
+                                <img src="{{ first_image.image.url }}" class="img-fluid" alt="{{ project.title }}">
+                            </div>
+                        </a>
+                    {% {% {% endif %} %}%}
+                {% endwith %}
             {% endif %}
         </div>
         <div>
