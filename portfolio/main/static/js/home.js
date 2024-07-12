@@ -1,48 +1,66 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const nameSearch = document.getElementById("name-search");
-    const tags = document.querySelectorAll(".tag");
-    const projects = document.querySelectorAll(".project");
+    try {
+        const nameSearch = document.getElementById("name-search");
+        const tags = document.querySelectorAll(".tag");
+        const projects = document.querySelectorAll(".project");
 
-    let selectedTags = [];
+        if (!nameSearch || !tags.length || !projects.length) {
+            throw new Error("Required elements not found in the DOM");
+        }
 
-    function filterProjects() {
-        const nameQuery = nameSearch.value.toLowerCase().trim();
+        let selectedTags = [];
 
-        projects.forEach(project => {
-            const name = project.getAttribute("data-name").toLowerCase();
-            const projectTags = project.getAttribute("data-tags").toLowerCase().split(",");
-            const matchesNameSearch = nameQuery === "" || name.includes(nameQuery);
-            const matchesSelectedTags = selectedTags.length === 0 || 
-                selectedTags.every(tag => projectTags.includes(tag));
+        function filterProjects() {
+            try {
+                const nameQuery = nameSearch.value.toLowerCase().trim();
 
-            console.log("project tags: " + projectTags, "\nselected tags: " + selectedTags);
+                projects.forEach(project => {
+                    const name = project.getAttribute("data-name");
+                    const projectTags = project.getAttribute("data-tags");
 
-            if (matchesNameSearch && matchesSelectedTags) {
-                project.style.display = "";
-            } else {
-                project.style.display = "none";
+                    if (!name || !projectTags) {
+                        throw new Error("Project is missing required data attributes");
+                    }
+
+                    const matchesNameSearch = nameQuery === "" || name.toLowerCase().includes(nameQuery);
+                    const projectTagsArray = projectTags.toLowerCase().split(",");
+                    const matchesSelectedTags = selectedTags.length === 0 || 
+                        selectedTags.every(tag => projectTagsArray.includes(tag));
+
+                    project.style.display = (matchesNameSearch && matchesSelectedTags) ? "" : "none";
+                });
+            } catch (error) {
+                console.error("Error in filterProjects:", error);
             }
+        }
+
+        tags.forEach(tag => {
+            tag.addEventListener("click", function () {
+                try {
+                    const selectedTag = this.getAttribute("data-tag");
+                    if (!selectedTag) {
+                        throw new Error("Tag is missing data-tag attribute");
+                    }
+
+                    const index = selectedTags.indexOf(selectedTag.toLowerCase());
+
+                    if (index === -1) {
+                        selectedTags.push(selectedTag.toLowerCase());
+                        this.classList.add("selected");
+                    } else {
+                        selectedTags.splice(index, 1);
+                        this.classList.remove("selected");
+                    }
+
+                    filterProjects();
+                } catch (error) {
+                    console.error("Error in tag click handler:", error);
+                }
+            });
         });
+
+        nameSearch.addEventListener("keyup", filterProjects);
+    } catch (error) {
+        console.error("Error initializing home.js:", error);
     }
-
-    tags.forEach(tag => {
-        tag.addEventListener("click", function () {
-            const selectedTag = this.getAttribute("data-tag").toLowerCase();
-            const index = selectedTags.indexOf(selectedTag);
-
-            if (index === -1) {
-                selectedTags.push(selectedTag);
-                this.classList.add("selected");
-            } else {
-                selectedTags.splice(index, 1);
-                this.classList.remove("selected");
-            }
-
-            filterProjects();
-
-            console.log(selectedTags);
-        });
-    });
-
-    nameSearch.addEventListener("keyup", filterProjects);
 });
