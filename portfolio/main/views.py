@@ -4,13 +4,16 @@ from django.db import OperationalError
 
 # Create your views here.
 def home(request):
+    return render(request, "home.html")
+
+def projects(request):
     try:
         projects = Project.objects.all()
         tags = Tag.objects.all().order_by("name")
     except OperationalError:
         projects = []
         tags = []
-    return render(request, "home.html", {"projects": projects, "tags": tags})
+    return render(request, "projects.html", {"projects": projects, "tags": tags})
 
 def about(request):
     return render(request, "about.html")
