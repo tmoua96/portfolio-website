@@ -10,17 +10,28 @@ Home Page
 {% endblock extrahead %}
 
 {% block content %}
-<h1>Welcome!</h1>
-<br>
-<h4>
-    I'm Tommy Moua
-</h4>
-<p>
-    An aspiring programmer with a strong foundation in C# and Unity looking to enter the software 
-    industry. Experienced working on a small independent team developing a project from concept to 
-    completion with a released game for Windows on the Steam platform. Eager to improve and 
-    expand my knowledge and skills in new technologies. 
-</p>
+<div class="container-fluid h-100 d-flex flex-column justify-content-center">
+    <h1 class="text-center mb-5 text-shadow">Welcome!</h1>
+    <!-- <div class="mb-5"></div>
+    <div class="mb-5"></div>
+    <div class="mb-5"></div>
+    <div class="mb-5"></div>
+    <div class="mb-5"></div>
+    <div class="mb-5"></div> -->
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6">
+            <div class="text-center">
+                <h4 class="mb-3">I'm Tommy Moua</h4>
+                <p>
+                    An aspiring programmer with a strong foundation in C# and Unity looking to enter the software 
+                    industry. Experienced working on a small independent team developing a project from concept to 
+                    completion with a released game for Windows on the Steam platform. Eager to improve and 
+                    expand my knowledge and skills in new technologies. 
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock content %}
 
 {% block extra_js %}

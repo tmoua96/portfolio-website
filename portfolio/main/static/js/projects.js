@@ -1,10 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
     try {
-        const nameSearch = document.getElementById("name-search");
         const tags = document.querySelectorAll(".tag");
         const projects = document.querySelectorAll(".project");
 
-        if (!nameSearch || !tags.length || !projects.length) {
+        if (!tags.length || !projects.length) {
             throw new Error("Required elements not found in the DOM");
         }
 
@@ -12,8 +11,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         function filterProjects() {
             try {
-                const nameQuery = nameSearch.value.toLowerCase().trim();
-
                 projects.forEach(project => {
                     const name = project.getAttribute("data-name");
                     const projectTags = project.getAttribute("data-tags");
@@ -22,12 +19,11 @@ document.addEventListener("DOMContentLoaded", function () {
                         throw new Error("Project is missing required data attributes");
                     }
 
-                    const matchesNameSearch = nameQuery === "" || name.toLowerCase().includes(nameQuery);
                     const projectTagsArray = projectTags.toLowerCase().split(",");
                     const matchesSelectedTags = selectedTags.length === 0 || 
                         selectedTags.every(tag => projectTagsArray.includes(tag));
 
-                    project.style.display = (matchesNameSearch && matchesSelectedTags) ? "" : "none";
+                    project.style.display = matchesSelectedTags ? "" : "none";
                 });
             } catch (error) {
                 console.error("Error in filterProjects:", error);
@@ -58,8 +54,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             });
         });
-
-        nameSearch.addEventListener("keyup", filterProjects);
     } catch (error) {
         console.error("Error initializing home.js:", error);
     }

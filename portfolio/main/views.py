@@ -24,3 +24,6 @@ def project(request, id):
     except OperationalError:
         return render(request, "project.html", {"error": "Database error occurred."})
     return render(request, "project.html", {"project": project})
+
+def skills(request):
+    return render(request, "skills.html")

@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Skills Page
+{% endblock title %}
+
+{% block extrahead %}
+<link rel="stylesheet" href="{% static 'css/skills.css' %}">
+{% endblock extrahead %}
+
+{% block content %}
+<h1 class="mb-5 text-shadow">Skills</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <h2 class="text-shadow">Front End</h2>
+            <div class="mb-3">
+                <span class="skill-badge">JavaScript</span>
+                <span class="skill-badge">HTML</span>
+                <span class="skill-badge">CSS</span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <h2>Back End</h2>
+            <div class="mb-3">
+                <span class="skill-badge">C#</span>
+                <span class="skill-badge">Python</span>
+                <span class="skill-badge">SQL</span>
+                <span class="skill-badge">SQL Server</span>
+                <span class="skill-badge">Java</span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <h2>Other</h2>
+            <div class="mb-3">
+                <span class="skill-badge">Unity</span>
+                <span class="skill-badge">.NET/.NET Core</span>
+                <span class="skill-badge">WinForms</span>
+                <span class="skill-badge">Git</span>
+                <span class="skill-badge">GitHub</span>
+                <span class="skill-badge">Web/REST API</span>
+                <span class="skill-badge">JSON</span>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block extra_js %}
+<script src="{% static 'js/skills.js' %}"></script>
+{% endblock extra_js %}

@@ -10,8 +10,8 @@ Projects Page
 {% endblock extrahead %}
 
 {% block content %}
+<h1 class="text-shadow mb-5">Projects</h1>
 <div class="filters">
-    <input type="text" id="name-search" placeholder="Search by name..."/>
     <div class="tags-list">
         {% for tag in tags %}
             <button class="tag" data-tag="{{ tag.name|lower }}">{{ tag.name }}</button>
