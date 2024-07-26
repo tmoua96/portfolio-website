@@ -10,7 +10,21 @@ About Page
 {% endblock extrahead %}
 
 {% block content %}
-<h2>About Tommy Moua</h2>
+<h2 class="mb-4">About Me</h2>
 
-
+<div class="d-flex gap-3">
+    <a href="https://www.linkedin.com/in/tommy-moua-5899b4141/" 
+    target="_blank" 
+    class="btn btn-outline-secondary p-2">
+        <img src="{% static 'images/LinkedIn-Logos/LI-In-Bug.png' %}" alt="LinkedIn Profile" class="img-fluid" style="width: 30px; height: 30px;">
+    </a>
+    <a href="https://github.com/tmoua96" 
+    target="_blank" 
+    class="btn btn-outline-secondary p-2">
+        <img src="{% static 'images/Github-Logos/github-mark.png' %}" alt="GitHub Profile" class="img-fluid" style="width: 30px; height: 30px;">
+    </a>
+</div>
 {% endblock content %}
+
+{% block extra_js %}
+{% endblock extra_js %}

@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,8 +21,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
+# Load environment variables from .env file
+load_dotenv()
+
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-7v*1yuf1od@xp@u979hogq(^j(**z^v+c02mt*8t93)53^&*=w'
+# SECRET_KEY = 'django-insecure-7v*1yuf1od@xp@u979hogq(^j(**z^v+c02mt*8t93)53^&*=w'
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 IS_HEROKU_APP = "DYNO" in os.environ and not "CI" in os.environ
 
