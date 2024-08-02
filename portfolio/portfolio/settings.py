@@ -17,33 +17,34 @@ from dotenv import load_dotenv
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+IS_HEROKU_APP = "DYNO" in os.environ and not "CI" in os.environ
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
-# Load environment variables from .env file
+# Load environment variables from .env file\
 load_dotenv()
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = 'django-insecure-7v*1yuf1od@xp@u979hogq(^j(**z^v+c02mt*8t93)53^&*=w'
 SECRET_KEY = os.getenv("SECRET_KEY")
-
-IS_HEROKU_APP = "DYNO" in os.environ and not "CI" in os.environ
+DJANGO_ENV  = os.getenv("DJANGO_ENV")
+IS_DEVEOPMENT = DJANGO_ENV == "development"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-if IS_HEROKU_APP:
-    DEBUG = False
-else:
+if IS_DEVEOPMENT:
     DEBUG = True
+else:
+    DEBUG = False
 
 # On Heroku, it's safe to use a wildcard for `ALLOWED_HOSTS``, since the Heroku router performs
 # validation of the Host header in the incoming HTTP request. On other platforms you may need to
 # list the expected hostnames explicitly in production to prevent HTTP Host header attacks. See:
 # https://docs.djangoproject.com/en/5.0/ref/settings/#std-setting-ALLOWED_HOSTS
-if IS_HEROKU_APP:
-    ALLOWED_HOSTS = ["*"]
-else:
+if IS_DEVEOPMENT:
     ALLOWED_HOSTS = [".localhost", "127.0.0.1", "[::1]", "0.0.0.0"]
+else:
+    ALLOWED_HOSTS = ["tommymoua.com"]
 
 
 # Application definition
