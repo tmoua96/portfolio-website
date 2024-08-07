@@ -35,7 +35,7 @@ if IS_DEVEOPMENT:
     ALLOWED_HOSTS = [".localhost", "127.0.0.1", "[::1]", "0.0.0.0"]
 else:
     DEBUG = False
-    ALLOWED_HOSTS = ["tommymoua.com", "www.tommymoua.com"]
+    ALLOWED_HOSTS = ["www.tommymoua.com"]
 
 
 # Application definition
