@@ -1,4 +1,6 @@
+from typing import Any
 from django.db import models
+import os
 
 # Create your models here.
 class Tag(models.Model):
@@ -22,3 +24,8 @@ class ProjectImage(models.Model):
     
     def __str__(self):
         return f"{self.project.title} Image"
+    
+    def delete(self, using: Any = ..., keep_parents: bool = ...) -> tuple[int, dict[str, int]]:
+        if self.image and os.path.isfile(self.image.path):
+            os.remove(self.image.path)
+        return super().delete(using, keep_parents)
