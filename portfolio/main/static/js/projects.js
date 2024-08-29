@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         throw new Error("Project is missing required data attributes");
                     }
 
-                    const projectTagsArray = projectTags.toLowerCase().split(",");
+                    const projectTagsArray = projectTags.toLowerCase().split(", ");
                     const matchesSelectedTags = selectedTags.length === 0 || 
                         selectedTags.every(tag => projectTagsArray.includes(tag));
 
@@ -47,6 +47,8 @@ document.addEventListener("DOMContentLoaded", function () {
                         selectedTags.splice(index, 1);
                         this.classList.remove("selected");
                     }
+
+                    console.log("selectedTags: ", selectedTags);
 
                     filterProjects();
                 } catch (error) {
