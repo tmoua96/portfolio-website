@@ -15,42 +15,10 @@ Portfolio - Resume
             </div>
             <div class="row gx-5 justify-content-center">
                 <div class="col-lg-11 col-xl-9 col-xxl-8">
-                    <!-- Experience Section-->
-                    <section>
-                        <div class="d-flex align-items-center justify-content-between mb-4">
-                            <h2 class="text-primary fw-bolder mb-0">Experience</h2>
-                            <!-- Download resume button-->
-                            <!-- Note: Set the link href target to a PDF file within your project-->
-                            <a class="btn btn-primary px-4 py-3" 
-                            href="{% static 'documents/Resume - Tommy Moua.pdf' %}" 
-                            download>
-                                <div class="d-inline-block bi bi-download me-2"></div>
-                                Download Resume
-                            </a>
-                        </div>
-                        <!-- Experience Card 1-->
-                         {% for job in jobs %}
-                         <div class="card shadow border-0 rounded-4 mb-5">
-                             <div class="card-body p-5">
-                                 <div class="row align-items-center gx-5">
-                                     <div class="col text-center text-lg-start mb-4 mb-lg-0">
-                                         <div class="bg-light p-4 rounded-4">
-                                             <div class="text-primary fw-bolder mb-2">{{job.start_year}} - {{job.end_year}}</div>
-                                             <div class="small fw-bolder">{{job.title}}</div>
-                                             <div class="small text-muted">{{job.company}}</div>
-                                             <div class="small text-muted">{{job.city}}, {{job.state}}</div>
-                                         </div>
-                                     </div>
-                                     <div class="col-lg-8"><div>{{job.description}}</div></div>
-                                 </div>
-                             </div>
-                         </div>
-                         {% endfor %}
-                    </section>
                     <!-- Education Section-->
                     <section>
                         <h2 class="text-secondary fw-bolder mb-4">Education</h2>
-                        <!-- Education Card 1-->
+                        <!-- Education Card -->
                          {% for school in schools %}
                         <div class="card shadow border-0 rounded-4 mb-5">
                             <div class="card-body p-5">
@@ -117,6 +85,37 @@ Portfolio - Resume
                                 </div>
                             </div>
                         </div>
+                    </section>
+                    <!-- Experience Section-->
+                    <section>
+                        <div class="d-flex align-items-center justify-content-between mb-4">
+                            <h2 class="text-primary fw-bolder mb-0">Experience</h2>
+                            <!-- Download resume button-->
+                            <a class="btn btn-primary px-4 py-3" 
+                            href="{% static 'documents/Resume - Tommy Moua.pdf' %}" 
+                            download>
+                                <div class="d-inline-block bi bi-download me-2"></div>
+                                Download Resume
+                            </a>
+                        </div>
+                        <!-- Experience Card -->
+                         {% for job in jobs %}
+                         <div class="card shadow border-0 rounded-4 mb-5">
+                             <div class="card-body p-5">
+                                 <div class="row align-items-center gx-5">
+                                     <div class="col text-center text-lg-start mb-4 mb-lg-0">
+                                         <div class="bg-light p-4 rounded-4">
+                                             <div class="text-primary fw-bolder mb-2">{{job.start_year}} - {{job.end_year}}</div>
+                                             <div class="small fw-bolder">{{job.title}}</div>
+                                             <div class="small text-muted">{{job.company}}</div>
+                                             <div class="small text-muted">{{job.city}}, {{job.state}}</div>
+                                         </div>
+                                     </div>
+                                     <div class="col-lg-8"><div>{{job.description}}</div></div>
+                                 </div>
+                             </div>
+                         </div>
+                         {% endfor %}
                     </section>
                 </div>
             </div>
