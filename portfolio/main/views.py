@@ -44,6 +44,7 @@ def contact(request):
         except KeyError:
             return render(request, "contact.html")
         
+        # TODO: still need to add actual validation
         if not settings.IS_DEVELOPMENT:
             Contact.objects.create(name=name, email=email, subject=subject, message=message)
 
