@@ -26,7 +26,7 @@ Portfolio - Projects
                                         <p>{{ project.description }}</p>
                                     </div>
                                     {% if project.thumbnail %}
-                                    <img class="img-fluid" src="{{ project.image }}" alt="..." />
+                                    <img class="img-fluid" src="{{project.thumbnail}}" alt="Project thumbnail..." />
                                     {% else %}
                                     <img class="img-fluid" src="https://dummyimage.com/300x400/343a40/6c757d" alt="..." />
                                     {% endif %}
