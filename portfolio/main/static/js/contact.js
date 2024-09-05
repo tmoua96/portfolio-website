@@ -12,4 +12,25 @@ function validate_contact(data) {
     return errors
 }
 
-export default validate_contact;
+document.getElementById("contactForm").addEventListener("submit", async function(event) {
+    event.preventDefault();
+
+    const formData = new FormData(this);
+    const response = await fetch("", {
+        method: "POST",
+        headers: {
+            "X-CSRFToken": formData.get("csrfmiddlewaretoken")
+        },
+        body: formData
+    });
+
+    messageBox = document.getElementById("messageBox");
+    if(response.ok) {
+        // const result = await response.json();
+        // messageBox.innerHTML = `<p>${result.key}: ${result.value}</p>`;
+        document.getElementById("submitSuccessMessage").classList.remove("d-none");
+    } else {
+        // messageBox.innerHTML = `<p>There was an error submitting your message. Please try again.</p>`;
+        document.getElementById("submitErrorMessage").classList.remove("d-none");
+    }
+});

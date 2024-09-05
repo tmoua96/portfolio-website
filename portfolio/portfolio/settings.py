@@ -27,10 +27,10 @@ load_dotenv()
 # SECRET_KEY = 'django-insecure-7v*1yuf1od@xp@u979hogq(^j(**z^v+c02mt*8t93)53^&*=w'
 SECRET_KEY = os.getenv("SECRET_KEY")
 DJANGO_ENV = os.getenv("DJANGO_ENV")
-IS_DEVEOPMENT = DJANGO_ENV == "development"
+IS_DEVELOPMENT = DJANGO_ENV == "development"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-if IS_DEVEOPMENT:
+if IS_DEVELOPMENT:
     DEBUG = True
     ALLOWED_HOSTS = [".localhost", "127.0.0.1", "[::1]", "0.0.0.0"]
 else:
@@ -145,11 +145,20 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
 # HTTPS settings
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
-SECURE_SSL_REDIRECT = True
+USE_HTTPS = os.getenv("USE_HTTPS") == "True"
+SESSION_COOKIE_SECURE = USE_HTTPS
+CSRF_COOKIE_SECURE = USE_HTTPS
+SECURE_SSL_REDIRECT = USE_HTTPS
 
 # HSTS settings
 SECURE_HSTS_SECONDS = 31536000 # 1 year
 SECURE_HSTS_PRELOAD = True
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+
+# Email settings
+EMAIL_BACKEND = os.getenv("EMAIL_BACKEND")
+EMAIL_HOST = os.getenv("EMAIL_HOST")
+EMAIL_PORT = os.getenv("EMAIL_PORT")
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
+EMAIL_USE_TLS = os.getenv("EMAIL_USE_TLS") == "True"
