@@ -2845,19 +2845,19 @@ textarea.form-control-lg {
 
 .btn-primary {
   --bs-btn-color: #fff;
-  --bs-btn-bg: #1e30f3;
-  --bs-btn-border-color: #1e30f3;
+  --bs-btn-bg: #4A6E8C;
+  --bs-btn-border-color: #446580;
   --bs-btn-hover-color: #fff;
-  --bs-btn-hover-bg: #1a29cf;
-  --bs-btn-hover-border-color: #1826c2;
+  --bs-btn-hover-bg: #142C4C;
+  --bs-btn-hover-border-color: rgb(24, 36, 179);
   --bs-btn-focus-shadow-rgb: 64, 79, 245;
   --bs-btn-active-color: #fff;
-  --bs-btn-active-bg: #1826c2;
+  --bs-btn-active-bg: #4A6E8C;
   --bs-btn-active-border-color: #1724b6;
   --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
   --bs-btn-disabled-color: #fff;
-  --bs-btn-disabled-bg: #1e30f3;
-  --bs-btn-disabled-border-color: #1e30f3;
+  --bs-btn-disabled-bg: #8da4b6;
+  --bs-btn-disabled-border-color: #4A6E8C;
 }
 
 .btn-secondary {
@@ -11582,7 +11582,7 @@ html {
   position: relative;
   height: 75vw;
   width: 75vw;
-  border-radius: 2vw;
+  border-radius: 5vw;
   margin-top: 5vw;
   max-height: 40rem;
   max-width: 40rem;
@@ -11611,7 +11611,7 @@ html {
   top: 6.05vw;
 }
 .profile .dots-2 svg {
-  fill: #1e30f3;
+  fill: #4A6E8C;
 }
 .profile .dots-3 {
   position: absolute;
@@ -11629,7 +11629,7 @@ html {
   bottom: 4vw;
 }
 .profile .dots-4 svg {
-  fill: #1e30f3;
+  fill: #142C4C;
 }
 
 @media (min-width: 576px) {

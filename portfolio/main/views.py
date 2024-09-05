@@ -9,7 +9,7 @@ def home(request):
 def resume(request):
     try:
         jobs = Job.objects.all()
-        schools = School.objects.all()
+        schools = School.objects.all().order_by("-end_year")
     except OperationalError:
         experience = []
         education = []
