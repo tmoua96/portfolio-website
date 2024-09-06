@@ -12,7 +12,8 @@ def home(request):
 def resume(request):
     try:
         jobs = Job.objects.all()
-        schools = School.objects.all().order_by("-end_year")
+        schools_query = School.objects.all().order_by("-end_year")
+        schools = [schools_query[0]] if len(schools_query) > 0 else []
     except OperationalError:
         jobs = []
         schools = []

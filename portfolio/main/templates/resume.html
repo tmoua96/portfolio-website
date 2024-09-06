@@ -17,7 +17,17 @@ Portfolio - Resume
                 <div class="col-lg-11 col-xl-9 col-xxl-8">
                     <!-- Education Section-->
                     <section>
-                        <h2 class="text-secondary fw-bolder mb-4">Education</h2>
+                        {% comment %} <h2 class="text-secondary fw-bolder mb-4">Education</h2> {% endcomment %}
+                        <div class="d-flex align-items-center justify-content-between mb-4">
+                            <h2 class="text-primary fw-bolder mb-0">Education</h2>
+                            <!-- Download resume button-->
+                            <a class="btn btn-primary px-4 py-3" 
+                            href="{% static 'documents/Resume - Tommy Moua.pdf' %}" 
+                            download>
+                                <div class="d-inline-block bi bi-download me-2"></div>
+                                Download Resume
+                            </a>
+                        </div>
                         <!-- Education Card -->
                          {% for school in schools %}
                         <div class="card shadow border-0 rounded-4 mb-5">
@@ -25,7 +35,7 @@ Portfolio - Resume
                                 <div class="row align-items-center gx-5">
                                     <div class="col text-center text-lg-start mb-4 mb-lg-0">
                                         <div class="bg-light p-4 rounded-4">
-                                            <div class="text-secondary fw-bolder mb-2">{{school.start_year}} - {{school.end_year}}</div>
+                                            <div class="text-primary fw-bolder mb-2">{{school.end_year}}</div>
                                             <div class="mb-2">
                                                 <div class="small fw-bolder">{{school.name}}</div>
                                                 <div class="small text-muted">{{school.city}}, {{school.state}}</div>
@@ -53,18 +63,25 @@ Portfolio - Resume
                                 <div class="mb-5">
                                     <div class="d-flex align-items-center mb-4">
                                         <div class="feature bg-primary bg-gradient-primary-to-secondary text-white rounded-3 me-3"><i class="bi bi-tools"></i></div>
-                                        <h3 class="fw-bolder mb-0"><span class="text-gradient d-inline">Skills</span></h3>
+                                        <h3 class="fw-bolder mb-0"><span class="text-gradient d-inline">Skills and Technologies</span></h3>
                                     </div>
-                                    <div class="row row-cols-1 row-cols-md-3 mb-4">
+                                    <div class="row row-cols-1 row-cols-md-4 mb-4">
                                         <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">Web Development</div></div>
                                         <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">Database Management</div></div>
                                         <div class="col"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">Game Programming</div></div>
+                                        <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">Application Development</div></div>
                                     </div>
-                                    {% comment %} <div class="row row-cols-1 row-cols-md-3">
-                                        <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">Network Security</div></div>
-                                        <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">Adobe Software Suite</div></div>
-                                        <div class="col"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">User Interface Design</div></div>
-                                    </div> {% endcomment %}
+                                    <div class="row row-cols-1 row-cols-md-3 mb-4">
+                                        <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">.NET/.NET Core</div></div>
+                                        <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">Unity</div></div>
+                                        <div class="col"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">Postgresql</div></div>
+                                    </div>
+                                    <div class="row row-cols-1 row-cols-md-4">
+                                        <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">SQL Server</div></div>
+                                        <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">Git/GitHub</div></div>
+                                        <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">REST/Web API</div></div>
+                                        <div class="col"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">WinForms</div></div>
+                                    </div>
                                 </div>
                                 <!-- Languages list-->
                                 <div class="mb-0">
@@ -72,10 +89,11 @@ Portfolio - Resume
                                         <div class="feature bg-primary bg-gradient-primary-to-secondary text-white rounded-3 me-3"><i class="bi bi-code-slash"></i></div>
                                         <h3 class="fw-bolder mb-0"><span class="text-gradient d-inline">Languages</span></h3>
                                     </div>
-                                    <div class="row row-cols-1 row-cols-md-3 mb-4">
+                                    <div class="row row-cols-1 row-cols-md-4 mb-4">
                                         <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">C#</div></div>
                                         <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">Python</div></div>
-                                        <div class="col"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">Java</div></div>
+                                        <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">Java</div></div>
+                                        <div class="col"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">C++</div></div>
                                     </div>
                                     <div class="row row-cols-1 row-cols-md-3">
                                         <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">Javascript</div></div>
@@ -88,16 +106,10 @@ Portfolio - Resume
                     </section>
                     <!-- Experience Section-->
                     <section>
-                        <div class="d-flex align-items-center justify-content-between mb-4">
+                        {% comment %} <div class="d-flex align-items-center justify-content-between mb-4">
                             <h2 class="text-primary fw-bolder mb-0">Experience</h2>
-                            <!-- Download resume button-->
-                            <a class="btn btn-primary px-4 py-3" 
-                            href="{% static 'documents/Resume - Tommy Moua.pdf' %}" 
-                            download>
-                                <div class="d-inline-block bi bi-download me-2"></div>
-                                Download Resume
-                            </a>
-                        </div>
+                        </div> {% endcomment %}
+                        <h2 class="text-secondary fw-bolder mb-4">Experience</h2>
                         <!-- Experience Card -->
                          {% for job in jobs %}
                          <div class="card shadow border-0 rounded-4 mb-5">
@@ -105,7 +117,7 @@ Portfolio - Resume
                                  <div class="row align-items-center gx-5">
                                      <div class="col text-center text-lg-start mb-4 mb-lg-0">
                                          <div class="bg-light p-4 rounded-4">
-                                             <div class="text-primary fw-bolder mb-2">{{job.start_year}} - {{job.end_year}}</div>
+                                             <div class="text-secondary fw-bolder mb-2">{{job.start_year}} - {{job.end_year}}</div>
                                              <div class="small fw-bolder">{{job.title}}</div>
                                              <div class="small text-muted">{{job.company}}</div>
                                              <div class="small text-muted">{{job.city}}, {{job.state}}</div>
