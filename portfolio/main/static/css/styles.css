@@ -219,6 +219,14 @@ strong {
   font-weight: bolder;
 }
 
+.project-card-link {
+  transition: transform 0.3s ease-in-out;
+}
+
+.project-card-link:hover {
+  transform: translate(5px, -7.5px);
+}
+
 small, .small {
   font-size: 0.875em;
 }
@@ -4219,7 +4227,7 @@ textarea.form-control-lg {
   margin-bottom: 0;
 }
 
-.card-link + .card-link {
+.project-card-link + .project-card-link {
   margin-left: var(--bs-card-spacer-x);
 }
 

@@ -3,7 +3,9 @@ from .models import Project, Tag, Job, School, Contact
 from django.db import OperationalError
 from django.http import JsonResponse
 from django.core.mail import send_mail
+from django.core.mail import EmailMessage
 from django.conf import settings
+import logging
 
 # Create your views here.
 def home(request):
@@ -38,24 +40,34 @@ def project(request, id):
 def contact(request):
     if request.method == "POST":
         try:
+            # TODO: still need to add actual validation
             name = request.POST["name"]
-            email = request.POST["email"]
+            from_email = request.POST["email"]
             subject = request.POST["subject"]
             message = request.POST["message"]
+
+            if name and from_email and subject and message:
+                full_message = f"{name} ({from_email}) says:\n\n{message}"
+
+                Contact.objects.create(name=name, email=from_email, subject=subject, message=message)
+
+                email = EmailMessage(
+                    subject=subject,
+                    body=full_message,
+                    from_email=settings.EMAIL_HOST_USER,
+                    to=[settings.EMAIL_HOST_USER],
+                    reply_to=[from_email]
+                )
+
+                email.send(fail_silently=False)
+            else:
+                return render(request, "contact.html", {"error": "An error occurred. Please try again later."})
         except KeyError:
             return render(request, "contact.html")
-        
-        # TODO: still need to add actual validation
-        if not settings.IS_DEVELOPMENT:
-            Contact.objects.create(name=name, email=email, subject=subject, message=message)
-
-        send_mail(
-            subject,
-            f'From {name}:\n{message}',
-            email,
-            [settings.EMAIL_HOST_USER],
-            fail_silently=False,
-        )
+        except:
+            logger = logging.getLogger(__name__)
+            logger.error("An error occurred while sending the email.", exc_info=True)
+            return render(request, "contact.html", {"error": "An error occurred. Please try again later."})
 
         return JsonResponse({"message": "Thank you for your message!"})
     
