@@ -232,7 +232,7 @@ strong {
 
 .project-tab {
   position: absolute;
-  right: -135px;
+  right: -145px;
   top: 25px;
   background-color: var(--bs-gray-200);
   color: black;
