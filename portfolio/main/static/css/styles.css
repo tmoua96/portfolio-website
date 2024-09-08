@@ -246,6 +246,11 @@ strong {
   right: 25px;
 }
 
+.project-tab-btn:hover {
+  background-color: var(--bs-gray-300);
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
 small, .small {
   font-size: 0.875em;
 }

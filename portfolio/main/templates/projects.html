@@ -24,6 +24,14 @@ Portfolio - Projects
                                     <div class="d-flex align-items-center">
                                         <div class="p-5">
                                             <h2 class="fw-bolder">{{ project.title }}</h2>
+                                            <p>
+                                                {% for tag in project.tags.all %}
+                                                {{ tag.name }}
+                                                {% if forloop.counter != project.tags.all|length %}
+                                                |
+                                                {% endif %}
+                                                {% endfor %}
+                                            </p>
                                             <p>{{ project.description }}</p>
                                         </div>
                                         {% if project.thumbnail %}
@@ -34,9 +42,7 @@ Portfolio - Projects
                                     </div>
                                 </div>
                                 <a href="{{ project.link }}" class="text-decoration-none" target="_blank">
-                                    <div class="project-tab shadow">
-                                        <span class="text-muted ">View Project</span>
-                                    </div>
+                                    <btn class="project-tab shadow text-muted project-tab-btn">View Project</btn>
                                 </a>
                             </div>
                         </div>
