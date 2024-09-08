@@ -36,6 +36,8 @@
   --bs-gray-900: #212529;
   --bs-primary: #1e30f3;
   --bs-secondary: #e21e80;
+  --bs-tertiary: #142C4C;
+  --bs-quaternary: #4A6E8C;
   --bs-success: #198754;
   --bs-info: #0dcaf0;
   --bs-warning: #ffc107;
@@ -219,12 +221,29 @@ strong {
   font-weight: bolder;
 }
 
-.project-card-link {
+.project-card {
   transition: transform 0.3s ease-in-out;
 }
 
-.project-card-link:hover {
+.project-card:hover {
   transform: translate(5px, -7.5px);
+  
+}
+
+.project-tab {
+  position: absolute;
+  right: -135px;
+  top: 25px;
+  background-color: var(--bs-gray-200);
+  color: black;
+  padding: 10px 20px;
+  border-radius: 10px;
+  transition: right 0.3s ease;
+  box-shadow: inset;
+}
+
+.project-card:hover .project-tab {
+  right: 25px;
 }
 
 small, .small {
@@ -4227,7 +4246,7 @@ textarea.form-control-lg {
   margin-bottom: 0;
 }
 
-.project-card-link + .project-card-link {
+.project-card + .project-card {
   margin-left: var(--bs-card-spacer-x);
 }
 

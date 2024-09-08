@@ -61,14 +61,12 @@ def contact(request):
 
                 email.send(fail_silently=False)
             else:
-                return render(request, "contact.html", {"error": "An error occurred. Please try again later."})
+                return render(request, "contact.html", {"error": "An error occurred. Please try again later."}, status=400)
         except KeyError:
-            return render(request, "contact.html")
+            return render(request, "contact.html", status=400)
         except:
             logger = logging.getLogger(__name__)
             logger.error("An error occurred while sending the email.", exc_info=True)
-            return render(request, "contact.html", {"error": "An error occurred. Please try again later."})
-
-        return JsonResponse({"message": "Thank you for your message!"})
+            return render(request, "contact.html", {"error": "An error occurred. Please try again later."}, status=400)
     
     return render(request, "contact.html")

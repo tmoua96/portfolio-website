@@ -26,11 +26,20 @@ document.getElementById("contactForm").addEventListener("submit", async function
 
     // const result = await response.json();
 
+    successMessage = document.getElementById("submitSuccessMessage");
+    errorMessage = document.getElementById("submitErrorMessage");
+
     if(response.ok) {
-        // document.getElementById("submitSuccessMessage").textContent = result.message;
-        document.getElementById("submitSuccessMessage").classList.remove("d-none");
+        successMessage.classList.remove("d-none");
+        if(!errorMessage.classList.contains("d-none")) {
+            console.log("Error message should be hidden.");
+            errorMessage.classList.add("d-none");
+        }
     } else {
-        // document.getElementById("submitErrorMessage").textContent = result.message;
-        document.getElementById("submitErrorMessage").classList.remove("d-none");
+        errorMessage.classList.remove("d-none");
+        if(!successMessage.classList.contains("d-none")) {
+            console.log("Successs message should be hidden.");
+            successMessage.classList.add("d-none");
+        };
     }
 });

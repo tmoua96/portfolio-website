@@ -18,8 +18,8 @@ Portfolio - Projects
                     <div class="col-lg-11 col-xl-9 col-xxl-8">
                         {% for project in projects %}
                         <!-- Project Card --> 
-                        <a href="{{ project.link }}" class="text-decoration-none" target="_blank">
-                            <div class="card overflow-hidden shadow rounded-4 border-0 mb-5 project-card-link">
+                         <div class="project-card">
+                            <div class="card overflow-hidden shadow rounded-4 border-0 mb-5">
                                 <div class="card-body p-0">
                                     <div class="d-flex align-items-center">
                                         <div class="p-5">
@@ -33,8 +33,13 @@ Portfolio - Projects
                                         {% endif %}
                                     </div>
                                 </div>
+                                <a href="{{ project.link }}" class="text-decoration-none" target="_blank">
+                                    <div class="project-tab shadow">
+                                        <span class="text-muted ">View Project</span>
+                                    </div>
+                                </a>
                             </div>
-                        </a>
+                        </div>
                         {% endfor %}
                     </div>
                 </div>
