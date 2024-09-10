@@ -251,6 +251,14 @@ strong {
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
+.profile-link {
+  transition: transform 0.3s ease-in-out;
+}
+
+.profile-link:hover {
+  transform: translate(0px, -3px);
+}
+
 small, .small {
   font-size: 0.875em;
 }
