@@ -21,18 +21,6 @@ class Project(models.Model):
     def __str__(self) -> str:
         return self.title
     
-class ProjectImage(models.Model):
-    project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="images")
-    image = models.ImageField(upload_to="project_images/")
-    
-    def __str__(self):
-        return f"{self.project.title} Image"
-    
-    def delete(self, using: Any = ..., keep_parents: bool = ...) -> tuple[int, dict[str, int]]:
-        if self.image and os.path.isfile(self.image.path):
-            os.remove(self.image.path)
-        return super().delete(using, keep_parents)
-    
 class Contact(models.Model):
     name = models.CharField(max_length=30)
     email = models.EmailField(max_length=50)
