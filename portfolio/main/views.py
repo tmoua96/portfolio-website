@@ -23,7 +23,7 @@ def resume(request):
 
 def projects(request):
     try:
-        projects = Project.objects.all().order_by("-priority", "name")
+        projects = Project.objects.all().order_by("-priority", "title")
         tags = Tag.objects.all().order_by("name")
     except OperationalError:
         projects = []
