@@ -29,6 +29,8 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
+    <script defer src="{% static 'js/main.js' %}" type="module">
+    </script>
     {% block extrahead %} {% endblock extrahead %}
   </head>
   <body>
@@ -62,8 +64,6 @@
   </footer>
 
     {% block extra_js %}
-    <script src="{% static 'js/main.js' %}" type="module">
-    </script>
     {% endblock extra_js %}
   </body>
 </html>
