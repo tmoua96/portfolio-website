@@ -62,6 +62,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'portfolio.urls'
+ADMIN_URL = os.getenv("ADMIN_URL")
 
 TEMPLATES = [
     {
