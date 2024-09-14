@@ -1,8 +1,4 @@
-from typing import Any
-from typing import Iterable
 from django.db import models
-import os
-from django.core.exceptions import ValidationError
 
 # Create your models here.
 class Tag(models.Model):
@@ -17,6 +13,7 @@ class Project(models.Model):
     tags = models.ManyToManyField(Tag, related_name="projects")
     link = models.URLField(max_length=200, blank=True)
     thumbnail = models.ImageField(upload_to="project_thumbnails/", blank=True)
+    priority = models.IntegerField(default=0, help_text="The higher the number, the higher the priority")
 
     def __str__(self) -> str:
         return self.title
@@ -26,6 +23,7 @@ class Contact(models.Model):
     email = models.EmailField(max_length=50)
     subject = models.CharField(max_length=50)
     message = models.TextField()
+    time_sent = models.DateTimeField(auto_now_add=True)
 
     def __str__(self) -> str:
         return self.name

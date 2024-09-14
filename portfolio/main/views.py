@@ -2,10 +2,10 @@ from django.shortcuts import render, get_object_or_404
 from .models import Project, Tag, Job, School, Contact
 from django.db import OperationalError
 from django.http import JsonResponse
-from django.core.mail import send_mail
 from django.core.mail import EmailMessage
+from smtplib import SMTPException
 from django.conf import settings
-import logging
+from .forms import ContactForm
 
 # Create your views here.
 def home(request):
@@ -23,7 +23,7 @@ def resume(request):
 
 def projects(request):
     try:
-        projects = Project.objects.all().order_by("id")
+        projects = Project.objects.all().order_by("-priority")
         tags = Tag.objects.all().order_by("name")
     except OperationalError:
         projects = []
@@ -40,33 +40,37 @@ def project(request, id):
 def contact(request):
     if request.method == "POST":
         try:
-            # TODO: still need to add actual validation
-            name = request.POST["name"]
-            from_email = request.POST["email"]
-            subject = request.POST["subject"]
-            message = request.POST["message"]
+            form = ContactForm(request.POST)
 
-            if name and from_email and subject and message:
-                full_message = f"{name} ({from_email}) says:\n\n{message}"
-
-                Contact.objects.create(name=name, email=from_email, subject=subject, message=message)
+            if form.is_valid():
+                # process the data in form.cleaned_data as required
+                # make contact object without saving to database just yet
+                contact: Contact = form.save(commit=False)
+                
+                full_message = f"{contact.name} ({contact.email}) says:\n\n{contact.message}"
 
                 email = EmailMessage(
-                    subject=subject,
+                    subject=contact.subject,
                     body=full_message,
                     from_email=settings.EMAIL_HOST_USER,
                     to=[settings.EMAIL_HOST_USER],
-                    reply_to=[from_email]
+                    reply_to=[contact.email]
                 )
 
                 email.send(fail_silently=False)
+
+                # save contact object to database   
+                contact.save()
+                
+                return JsonResponse({"success": True, "message": "Message sent successfully."}, status=200)
             else:
-                return render(request, "contact.html", {"error": "An error occurred. Please try again later."}, status=400)
-        except KeyError:
-            return render(request, "contact.html", status=400)
-        except:
-            logger = logging.getLogger(__name__)
-            logger.error("An error occurred while sending the email.", exc_info=True)
-            return render(request, "contact.html", {"error": "An error occurred. Please try again later."}, status=400)
+                message: str = "Error sending message. Ensure all fields are filled correctly."
+                return JsonResponse({"success": False, "message": message, "errors": form.errors}, status=400)
+        except SMTPException as e:
+            message: str = "Unable to send. An error occurred while sending the email. Please try again later."
+            return JsonResponse({"success": False, "message": message, "exception": e}, status=400)
+        except Exception as e:
+            message: str = "Error sending message."
+            return JsonResponse({"success": False, "message": message, "exception": e}, status=400)
     
     return render(request, "contact.html")

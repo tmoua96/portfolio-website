@@ -20,7 +20,7 @@ Portfolio - Contact
                     </div>
                     <div class="row gx-5 justify-content-center">
                         <div class="col-lg-8 col-xl-6">
-                            <form id="contactForm" method="POST" action="{% url 'contact' %}" data-sb-form-api-token="API_TOKEN">
+                            <form id="contactForm" method="post" action="">
                                 {% csrf_token %}
                                 <!-- Name input-->
                                 <div class="form-floating mb-3">
@@ -47,14 +47,10 @@ Portfolio - Contact
                                     <label for="message">Message</label>
                                     <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
                                 </div>
-                                <!-- Submit success message-->
-                                <div class="d-none" id="submitSuccessMessage">
-                                    <div class="text-center mb-3">
-                                        <div class="fw-bolder">Form submission successful!</div>
-                                    </div>
+                                <!-- Submit status message-->
+                                <div class="d-none" id="submitContainer">
+                                    <div class="text-center mb-3" id="submitMessage"></div>
                                 </div>
-                                <!-- Submit error message-->
-                                <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
                                 <!-- Submit Button-->
                                 <div class="d-grid"><button class="btn btn-primary btn-lg " id="submitButton" type="submit">Submit</button></div>
                             </form>
