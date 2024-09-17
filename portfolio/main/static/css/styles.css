@@ -256,7 +256,7 @@ strong {
 }
 
 .profile-link:hover {
-  transform: translate(0px, -3px);
+  transform: translate(0px, -5px);
 }
 
 small, .small {
