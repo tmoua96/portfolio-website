@@ -11624,12 +11624,12 @@ html {
   width: 75vw;
   border-radius: 5vw;
   margin-top: 5vw;
-  max-height: 40rem;
-  max-width: 40rem;
+  max-height: 35rem;
+  max-width: 35rem;
 }
 .profile .profile-img {
   height: 80vw;
-  max-height: 45rem;
+  max-height: 40rem;
   position: absolute;
   bottom: 0px;
   left: 50%;
