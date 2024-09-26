@@ -22,13 +22,17 @@ document.getElementById("message").addEventListener("input", async function(even
 
 });
 
-document.getElementById("contactForm").addEventListener("submit", async function(event) {
+document.getElementById("contact-form").addEventListener("submit", async function(event) {
     event.preventDefault();
 
+    // TODO: add more interactive validation
+    // Add some loading maybe?
+    // Add some validation message/popups for other input fields
+
     try {
-        document.getElementById("submitContainer").classList.remove("d-none");
-        const submitMessage = document.getElementById("submitMessage");
-        const submitButton = document.getElementById("submitButton");
+        document.getElementById("submit-container").classList.remove("d-none");
+        const submitMessage = document.getElementById("submit-message");
+        const submitButton = document.getElementById("submit-button");
         submitButton.disabled = true;
 
         const formData = new FormData(this);

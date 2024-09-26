@@ -18,9 +18,9 @@ Portfolio - Contact
                         <h2 class="fw-bolder">If you have any questions</h2>
                         <p class="lead fw-normal text-muted mb-0">Contact me.</p>
                     </div>
-                    <div class="row gx-5 justify-content-center">
+                    <div class="row gx-5 justify-content-center mb-5">
                         <div class="col-lg-8 col-xl-6">
-                            <form id="contactForm" method="post" action="">
+                            <form id="contact-form" method="post" action="">
                                 {% csrf_token %}
                                 <!-- Name input-->
                                 <div class="form-floating mb-3">
@@ -48,14 +48,15 @@ Portfolio - Contact
                                     <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
                                 </div>
                                 <!-- Submit status message-->
-                                <div class="d-none" id="submitContainer">
-                                    <div class="text-center mb-3" id="submitMessage"></div>
+                                <div class="d-none" id="submit-container">
+                                    <div class="text-center mb-3" id="submit-message"></div>
                                 </div>
                                 <!-- Submit Button-->
-                                <div class="d-grid"><button class="btn btn-primary btn-lg " id="submitButton" type="submit">Submit</button></div>
+                                <div class="d-grid"><button class="btn btn-primary btn-lg " id="submit-button" type="submit">Submit</button></div>
                             </form>
                         </div>
                     </div>
+                    {% include "profile_links.html"%}
                 </div>
             </div>
         </section>
