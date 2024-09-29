@@ -18,10 +18,6 @@ document.getElementById("subject").addEventListener("input", async function(even
     }
 });
 
-document.getElementById("message").addEventListener("input", async function(event) {
-
-});
-
 document.getElementById("contact-form").addEventListener("submit", async function(event) {
     event.preventDefault();
 
@@ -46,8 +42,6 @@ document.getElementById("contact-form").addEventListener("submit", async functio
 
         const result = await response.json();
 
-        submitButton.disabled = false;
-
         if(response.ok) {
             // Set as array incase more classes are added. Can probably just make it a single
             const successClasses = ["text-success"];
@@ -60,6 +54,7 @@ document.getElementById("contact-form").addEventListener("submit", async functio
             successClasses.forEach(c => submitMessage.classList.add(c));
         } else {
             displayErrorMessage(result["message"], submitMessage);
+            submitButton.disabled = false;
         }
     } catch (error) {
         submitButton.disabled = false;

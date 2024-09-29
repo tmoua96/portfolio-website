@@ -59,7 +59,6 @@ def contact(request):
 
                 email.send(fail_silently=False)
 
-                # save contact object to database   
                 contact.save()
                 
                 return JsonResponse({"success": True, "message": "Message sent successfully."}, status=200)

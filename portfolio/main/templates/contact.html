@@ -23,7 +23,7 @@ Portfolio - Contact
                     </div>
                     <div class="row gx-5 justify-content-center mb-5">
                         <div class="col-lg-8 col-xl-6">
-                            <form id="contact-form" method="post" action="">
+                            <form id="contact-form" method="POST">
                                 {% csrf_token %}
                                 <!-- Name input-->
                                 <div class="form-floating mb-3">
@@ -41,8 +41,8 @@ Portfolio - Contact
                                 <!-- Subject input-->
                                 <div class="form-floating mb-3">
                                     <input class="form-control" id="subject" name="subject" type="text" placeholder="Enter your subject..." data-sb-validations="required" />
-                                    <label for="name">Subject</label>
-                                    <div class="invalid-feedback" data-sb-feedback="name:required">A subject is required.</div>
+                                    <label for="subject">Subject</label>
+                                    <div class="invalid-feedback" data-sb-feedback="subject:required">A subject is required.</div>
                                 </div>
                                 <!-- Message input-->
                                 <div class="form-floating mb-3">
@@ -64,8 +64,4 @@ Portfolio - Contact
         </section>
     </main>
 </body>
-{% endblock %}
-
-{% block extra_js %}
-<script src="{% static 'js/contact.js' %}"></script>
 {% endblock %}
