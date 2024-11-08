@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     try {
-        const tags = document.querySelectorAll(".tag");
-        const projects = document.querySelectorAll(".project");
+        const tags = document.querySelectorAll(".tag-btn");
+        const projects = document.querySelectorAll(".project-card");
 
         if (!tags.length || !projects.length) {
             throw new Error("Required elements not found in the DOM");
@@ -12,21 +12,20 @@ document.addEventListener("DOMContentLoaded", function () {
         function filterProjects() {
             try {
                 projects.forEach(project => {
-                    const name = project.getAttribute("data-name");
                     const projectTags = project.getAttribute("data-tags");
 
-                    if (!name || !projectTags) {
+                    if (!projectTags) {
                         throw new Error("Project is missing required data attributes");
                     }
 
                     const projectTagsArray = projectTags.toLowerCase().split(", ");
                     const matchesSelectedTags = selectedTags.length === 0 || 
-                        selectedTags.every(tag => projectTagsArray.includes(tag));
+                        selectedTags.some(tag => projectTagsArray.includes(tag));
 
                     project.style.display = matchesSelectedTags ? "" : "none";
                 });
             } catch (error) {
-                console.error("Error in filterProjects:", error);
+                console.error("Error with filtering projects:", error);
             }
         }
 
@@ -42,10 +41,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     if (index === -1) {
                         selectedTags.push(selectedTag.toLowerCase());
-                        this.classList.add("selected");
+                        this.classList.add("btn-dark");
+                        this.classList.remove("btn-outline-dark");
                     } else {
                         selectedTags.splice(index, 1);
-                        this.classList.remove("selected");
+                        this.classList.remove("btn-dark");
+                        this.classList.add("btn-outline-dark");
                     }
 
                     console.log("selectedTags: ", selectedTags);
@@ -57,6 +58,6 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
     } catch (error) {
-        console.error("Error initializing home.js:", error);
+        console.error("Error initializing projects.js:", error);
     }
 });
