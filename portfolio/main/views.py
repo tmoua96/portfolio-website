@@ -6,6 +6,7 @@ from django.core.mail import EmailMessage
 from smtplib import SMTPException
 from django.conf import settings
 from .forms import ContactForm
+from .utils import is_english
 
 # Create your views here.
 def home(request):
@@ -46,18 +47,19 @@ def contact(request):
                 # process the data in form.cleaned_data as required
                 # make contact object without saving to database just yet
                 contact: Contact = form.save(commit=False)
-                
-                full_message = f"{contact.name} ({contact.email}) says:\n\n{contact.message}"
 
-                email = EmailMessage(
-                    subject=contact.subject,
-                    body=full_message,
-                    from_email=settings.EMAIL_HOST_USER,
-                    to=[settings.EMAIL_HOST_USER],
-                    reply_to=[contact.email]
-                )
+                if is_english(contact.message):
+                    full_message = f"{contact.name} ({contact.email}) says:\n\n{contact.message}"
 
-                email.send(fail_silently=False)
+                    email = EmailMessage(
+                        subject=contact.subject,
+                        body=full_message,
+                        from_email=settings.EMAIL_HOST_USER,
+                        to=[settings.EMAIL_HOST_USER],
+                        reply_to=[contact.email]
+                    )
+
+                    email.send(fail_silently=False)
 
                 contact.save()
                 
