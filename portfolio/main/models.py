@@ -13,10 +13,16 @@ class Project(models.Model):
     tags = models.ManyToManyField(Tag, related_name="projects")
     link = models.URLField(max_length=200, blank=True)
     thumbnail = models.ImageField(upload_to="project_thumbnails/", blank=True)
-    priority = models.IntegerField(default=0, help_text="The higher the number, the higher the priority")
+    priority = models.IntegerField(default=0, help_text="The higher the number, the higher the priority(shows up higher on the view or list)")
 
     def __str__(self) -> str:
         return self.title
+    
+    # @property
+    # def link_resolved(self):
+    #     if self.link.startswith("/"):
+    #         return settings.STATIC_URL.rstrip("/") + self.link.lstrip("/")
+    #     return self.link
     
 class Contact(models.Model):
     name = models.CharField(max_length=30)
